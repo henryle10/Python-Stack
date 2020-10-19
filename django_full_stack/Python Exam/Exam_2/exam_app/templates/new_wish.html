@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>New wish</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1>Hello {{user.first_name}}! Make a wish!</h1>
+        <ul class="nav navbar-nav ml-auto">
+            <li>
+                <div class="shadow">
+                    <a class="btn btn-danger" style="padding-right: 10px;" href="/logout">logout</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="text-danger">
+            {%if messages%}
+            <ul class="list-unstyled d-inline-block">
+                {%for message in messages%}
+                <li class="text-left">
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div style="border: 1px solid black; padding: 20px;">
+            <form action="/make_wish" method="POST">
+                {%csrf_token %}
+                <div>
+                    <label for="">I wish for:
+                        <input class="form-control" type="text" name="wish">
+                    </label>
+                </div>
+                <div>
+                    <label for="">Description:
+                        <input class="form-control" type="text" name="desc">
+                    </label>
+                </div>
+                <a class="btn btn-outline-secondary" href="/cancel">Cancel</a>
+                <button class="btn btn-outline-secondary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

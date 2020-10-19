@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "goldEnv\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": false,
+    "python.linting.banditEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "git.ignoreLimitWarning": true
+}

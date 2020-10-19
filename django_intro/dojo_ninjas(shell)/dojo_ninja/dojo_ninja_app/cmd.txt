@@ -1,0 +1,62 @@
+from app_name.models import *
+>>> Dojo
+<class 'dojo_ninja_app.models.Dojo'>
+>>> Dojo.objects.create(name="Hapkido", city="OC", state="CA")
+<Dojo: Hapkido OC>
+>>> Dojo.objects.create(name="Aikido", city="Westminster", state="AZ")  
+<Dojo: Aikido Westminster>
+>>> Dojo.objects.create(name="MMA", city="Fountain Valley", state="WA")    
+<Dojo: MMA Fountain Valley>
+>>> D1 = Dojo.objects.get(id=1)
+>>> D1.delete()
+(1, {'dojo_ninja_app.ninjas': 0, 'dojo_ninja_app.Dojo': 1})
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: Aikido Westminster>, <Dojo: MMA Fountain Valley>]>
+>>> D2 = Dojo.objects.get(id=2) 
+>>> D3 = Dojo.objects.get(id=3) 
+>>> D2.delete()
+(1, {'dojo_ninja_app.ninjas': 0, 'dojo_ninja_app.Dojo': 1})
+>>> D3.delete()
+(1, {'dojo_ninja_app.ninjas': 0, 'dojo_ninja_app.Dojo': 1})
+>>> Dojo.objects.all()
+<QuerySet []>
+>>> Dojo.objects.create(name="Hapkido", city="OC", state="CA")          
+<Dojo: Hapkido OC>
+>>> Dojo.objects.create(name="Aikido", city="Westminster", state="AZ")
+<Dojo: Aikido Westminster>
+>>> Dojo.objects.create(name="MMA", city="Fountain Valley", state="WA")
+<Dojo: MMA Fountain Valley>
+>>> ninja1 = ninjas.object.create(first_name="Henry", last_name="Le", dojo = Dojo.objects.get(id=1))
+>>> ninja1 = ninjas.objects.create(first_name="Henry", last_name="Le", dojo = Dojo.objects.get(id=4)) 
+>>> ninja2 = ninjas.objects.create(first_name="Justin", last_name="Mach", dojo = Dojo.objects.get(id=4))  
+>>> ninja3 = ninjas.objects.create(first_name="Scott", last_name="Chong", dojo = Dojo.objects.get(id=4))  
+>>> ninja4 = ninjas.objects.create(first_name="D", last_name="J", dojo = Dojo.objects.get(id=5))         
+>>> ninja5 = ninjas.objects.create(first_name="Nadia", last_name="Nguyen", dojo = Dojo.objects.get(id=5)) 
+>>> ninja6 = ninjas.objects.create(first_name="Banh", last_name="Mi", dojo = Dojo.objects.get(id=5))      
+>>> ninja7 = ninjas.objects.create(first_name="Jimmy", last_name="Lam", dojo = Dojo.objects.get(id=6)) 
+>>> ninja8 = ninjas.objects.create(first_name="Faris", last_name="A", dojo = Dojo.objects.get(id=6))   
+>>> ninja9 = ninjas.objects.create(first_name="Supreme", last_name="Hype", dojo = Dojo.objects.get(id=6)) 
+>>> D4 = Dojo.objects.get(id = 4)
+>>> ninjas_dojo1 = ninjas.objects.get(dojo=D4)
+>>> D5 = Dojo.objects.get(id = 5)
+>>> ninjas_dojo2 = ninjas.objects.get(dojo=D5)
+>>> D6 = Dojo.objects.get(id = 6)
+>>> ninjas_dojo3 = ninjas.objects.get(dojo=D6)
+>>> last_ninja = ninjas.objects.last()
+>>> last_ninja.dojo.name     
+
+(dojoenv) C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\dojo_ninjas(shell)\dojo_ninja>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninja_app, sessions
+Running migrations:
+  Applying dojo_ninja_app.0002_dojo_desc... OK
+  Applying dojo_ninja_app.0003_auto_20200310_1535... OK
+
+(dojoenv) C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\dojo_ninjas(shell)\dojo_ninja>python manage.py shell
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 22:45:29) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_ninja_app.models import *
+>>> Dojo.objects.create(name="Coding", city="Costa mesa", state="HA", desc="Basically the matrix")
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-danger">
+            {%if messages%}
+            <ul class="list-unstyled d-inline-block">
+                {%for message in messages%}
+                <li class="text-left">
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <h1>All shows</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Network</th>
+                    <th scope="col">Release Date</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for shows in all_s %}
+                <tr>
+                    <th class="d-block">{{shows.id}}</th>
+                    <td>{{shows.title}}</td>
+                    <td>{{shows.network}}</td>
+                    <td>{{shows.release_date}}</td>
+                    <td>
+                        <a href="/show_info/{{shows.id}}">Show</a>
+                        <a href="/shows/{{shows.id}}/edit">edit</a>
+                        <a href="/delete/{{shows.id}}">delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form action="/new">
+            <button>Add a New Show</button>
+        </form>
+</body>
+
+</html>

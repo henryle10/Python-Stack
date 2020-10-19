@@ -1,0 +1,84 @@
+PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM> & "c:/Users/henry/OneDrive/Documents/Coding Practice/Python/django/django_intro/SQL_to_ORM/sqlEnv/Scripts/activate.ps1"
+(sqlEnv) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM> & "c:/Users/henry/OneDrive/Documents/Coding Practice/Python/django/django_intro/SQL_to_ORM/sqlEnv/Scripts/python.exe" -m pip install -U pylint
+Collecting pylint
+  Using cached https://files.pythonhosted.org/packages/e9/59/43fc36c5ee316bb9aeb7cf5329cdbdca89e5749c34d5602753827c0aa2dc/pylint-2.4.4-py3-none-any.whl
+Collecting astroid<2.4,>=2.3.0 (from pylint)
+  Using cached https://files.pythonhosted.org/packages/ad/ae/86734823047962e7b8c8529186a1ac4a7ca19aaf1aa0c7713c022ef593fd/astroid-2.3.3-py3-none-any.whl
+Collecting colorama; sys_platform == "win32" (from pylint)
+  Using cached https://files.pythonhosted.org/packages/c9/dc/45cdef1b4d119eb96316b3117e6d5708a08029992b2fee2c143c7a0a5cc5/colorama-0.4.3-py2.py3-none-any.whl
+Collecting mccabe<0.7,>=0.6 (from pylint)
+  Using cached https://files.pythonhosted.org/packages/87/89/479dc97e18549e21354893e4ee4ef36db1d237534982482c3681ee6e7b57/mccabe-0.6.1-py2.py3-none-any.whl
+Collecting isort<5,>=4.2.5 (from pylint)
+  Using cached https://files.pythonhosted.org/packages/e5/b0/c121fd1fa3419ea9bfd55c7f9c4fedfec5143208d8c7ad3ce3db6c623c21/isort-4.3.21-py2.py3-none-any.whl
+Collecting wrapt==1.11.* (from astroid<2.4,>=2.3.0->pylint)
+  Using cached https://files.pythonhosted.org/packages/23/84/323c2415280bc4fc880ac5050dddfb3c8062c2552b34c2e512eb4aa68f79/wrapt-1.11.2.tar.gz
+Collecting six~=1.12 (from astroid<2.4,>=2.3.0->pylint)
+  Using cached https://files.pythonhosted.org/packages/65/eb/1f97cb97bfc2390a276969c6fae16075da282f5058082d4cb10c6c5c1dba/six-1.14.0-py2.py3-none-any.whl
+Collecting lazy-object-proxy==1.4.* (from astroid<2.4,>=2.3.0->pylint)
+98c4a9e50856923ceb556b4d202247232/lazy_object_proxy-1.4.3-cp38-cp38-win32.whl
+Installing collected packages: wrapt, six, lazy-object-proxy, astroid, colorama, mccabe, isort, pylint
+  Running setup.py install for wrapt ... done
+Successfully installed astroid-2.3.3 colorama-0.4.3 isort-4.3.21 lazy-object-proxy-1.4.3 mccabe-0.6.1 pylint-2.4.4 six-1.14.0 wrapt-1.11.2
+WARNING: You are using pip version 19.2.3, however version 20.0.2 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.    
+(sqlEnv) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM> & "c:/Users/henry/OneDrive/Documents/Coding Practice/Python/django/django_intro/SQL_to_ORM/sqlEnv/Scripts/python.exe" -m pip install -U autopep8
+Collecting autopep8
+  Using cached https://files.pythonhosted.org/packages/12/55/7b07585ca0c30e5b216e4d627f8Collecting pycodestyle>=2.5.0 (from autopep8)
+  Using cached https://files.pythonhosted.org/packages/0e/0c/04a353e104d2f324f8ee5f4b32012618c1c86dd79e52a433b64fceed511b/pycodestyle-2.5.0-py2.py3-none-any.whl
+Installing collected packages: pycodestyle, autopep8
+Successfully installed autopep8-1.5 pycodestyle-2.5.0
+WARNING: You are using pip version 19.2.3, however version 20.0.2 is available.
+(sqlEnv) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM> python manage.py makemigrations
+C:\Users\henry\AppData\Local\Programs\Python\Python38-32\python.exe: can't open file 'manage.py': [Errno 2] No such file or directory
+(sqlEnv) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM> cd .\sql_orm\
+(sqlEnv) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM\sql_orm> python .\manage.py makemigrations
+Migrations for 'sql_app':
+  sql_app\migrations\0001_initial.py
+    - Create model Wizard
+(sqlEnv) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM\sql_orm> python .\manage.py makemigrations
+No changes detected
+(sqlEnv) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM\sql_orm> python .\manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, sql_app
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying sessions.0001_initial... OK
+  Applying sql_app.0001_initial... OK
+(sqlEnv) PS C:\Users\      OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM\sql_orm>
+(sqlEnv) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\SQL_to_ORM\sql_orm> python .\manage.py shell
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 22:45:29) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.sql_app.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'apps'
+>>> from app.sql_app.models import *   
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'app'
+>>> from sql_app.models import *     
+>>> Wizard.objects.create(name="Padma Patil", house="Ravenclaw", pet="None", year="5")
+<Wizard: Wizard object (1)>
+>>> Wizard.objects.create(name="Luna Lovegood", house="Ravenclaw", pet="None", year="4")
+<Wizard: Wizard object (2)>
+>>> ravenclaws = Wizard.objects.filter(house="Ravenclaw")
+>>> 
+>>> luna = Wizard.objects.get(name="Luna Lovegood")
+>>> luna.year = 5
+>>> luna.save()
+>>> 

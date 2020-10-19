@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+    <h3>Your Gold</h3>
+    <h4>Amount: {{gold_count}}</h4>
+
+    <form class="squares" action="/process_money" method="POST">
+        {% csrf_token %}
+        <h3>Farm</h3>
+        <p>(earns 10-20 golds)</p>
+        <input type="hidden" name="location" value="Farm" />
+        <button>Find Gold!</button>
+    </form>
+
+    <form class="squares" action="/process_money" method="POST">
+        {% csrf_token %}
+        <h3>Cave</h3>
+        <p>(earns 5-10 golds)</p>
+        <input type="hidden" name="location" value="Cave" />
+        <button>Find Gold!</button>
+    </form>
+
+    <form class="squares" action="/process_money" method="POST">
+        {% csrf_token %}
+        <h3>House</h3>
+        <p>(earns 2-5 golds)</p>
+        <input type="hidden" name="location" value="House" />
+        <button>Find Gold!</button>
+    </form>
+
+    <form class="squares" action="/process_money" method="POST">
+        {% csrf_token %}
+        <h3>Casino</h3>
+        <p>(earns/takes 0-50 golds)</p>
+        <input type="hidden" name="location" value="Casino" />
+        <button>Find Gold!</button>
+    </form>
+
+    <div id="activitiez">
+        {% for i in request.session.activities %}
+        {% if 'earned' in i %}
+        <p style="color: green;">{{i}}</p>
+        {% else %}
+        <p style="color: red;">{{i}}</p>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <form action="/process_money" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="location" value="reset">
+        <button>Reset</button>
+    </form>
+
+</body>
+
+</html>

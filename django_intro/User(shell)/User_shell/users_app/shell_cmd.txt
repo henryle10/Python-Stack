@@ -1,0 +1,118 @@
+<QuerySet [<users: users object (1)>, <users: users object (2)>, <users: users object (3)>]>
+>>> users.objects.all().value(1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'value'
+>>> users.objects.all().value() 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'value'
+>>> users.objects.all()        
+<QuerySet [<users: users object (1)>, <users: users object (2)>, <users: users object (3)>]>
+>>> users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Henry', 'last_name': 'Le', 'email_address': 'h@l.com', 'age': 21, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Justin', 'last_name': 'Mach', 'email_address': 'j@m.com', 'age': 24, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 29, 926908, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 29, 926908, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Derek', 'last_name': 'Ho', 'email_address': 'd@h.com', 'age': 25, 'created_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>)}]>
+>>> users.objects.first()
+<users: users object (1)>
+>>> users.objects.first().values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'users' object has no attribute 'values'
+>>> users.objects.first().value()  
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'users' object has no attribute 'value'
+>>> henry = user.objects.filter(first_name="Henry")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'user' is not defined
+>>> henry = users.objects.filter(first_name="Henry") 
+>>> henry
+<QuerySet [<users: users object (1)>]>
+>>> users.objects.create(first_name="Scott", last_name="Chong", email_address="s@c.com", age="34") 
+<users: users object (4)>
+>>> user.objects.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'user' is not defined
+>>> users.objects.all() 
+<QuerySet [<users: users object (1)>, <users: users object (2)>, <users: users object (3)>, <users: users object (4)>]>
+>>> users.object.last()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'users' has no attribute 'object'
+>>> users.objects'.last() 
+  File "<console>", line 1
+    users.objects'.last()
+                        ^
+SyntaxError: EOL while scanning string literal
+>>> users.objects.last()  
+<users: users object (4)>
+>>> henry
+<QuerySet [<users: users object (1)>]>
+>>> u3 = users.objects.get(id=3)
+>>> u3
+<users: users object (3)>
+>>> u3.last_name="Pancakes" 
+>>> u3
+<users: users object (3)>
+>>> u3.values
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'users' object has no attribute 'values'
+>>> u3.values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'users' object has no attribute 'values'
+>>> users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Henry', 'last_name': 'Le', 'email_address': 'h@l.com', 'age': 21, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Justin', 'last_name': 'Mach', 'email_address': 'j@m.com', 'age': 24, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 29, 926908, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 29, 926908, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Derek', 'last_name': 'Ho', 'email_address': 'd@h.com', 'age': 25, 'created_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Scott', 'last_name': 'Chong', 'email_address': 's@c.com', 'age': 34, 'created_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>)}]>
+>>> users.object.get(id=2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'users' has no attribute 'object'
+>>> users.objects.get(id=2) 
+<users: users object (2)>
+>>> u2= users.objects.get(id=2) 
+>>> u2
+<users: users object (2)>
+>>> u2.delete()
+(1, {'users_app.users': 1})
+>>> users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Henry', 'last_name': 'Le', 'email_address': 'h@l.com', 'age': 21, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Derek', 'last_name': 'Ho', 'email_address': 'd@h.com', 'age': 25, 'created_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Scott', 'last_name': 'Chong', 'email_address': 's@c.com', 'age': 34, 'created_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>)}]>
+>>> u3
+<users: users object (3)>
+>>> u3.last_name="Pancakes"
+>>> u3.save()
+>>> users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Henry', 'last_name': 'Le', 'email_address': 'h@l.com', 'age': 21, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Derek', 'last_name': 'Pancakes', 'email_address': 'd@h.com', 'age': 25, 'created_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 40, 12, 817586, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Scott', 'last_name': 'Chong', 'email_address': 's@c.com', 'age': 34, 'created_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>)}]>        
+>>> users.objects.all().order_by("first_name")
+<QuerySet [<users: users object (3)>, <users: users object (1)>, <users: users object (4)>]>
+>>> users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Henry', 'last_name': 'Le', 'email_address': 'h@l.com', 'age': 21, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Derek', 'last_name': 'Panc(2020, 3, 9, 20, 40, 12, 817586, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Scott', 'last_name': 'Chong', 'email_address': 's@c.com', 'age': 34, 'created_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>)}]>        
+>>> users.objects.all().order_by("-first_name")
+<QuerySet [<users: users object (4)>, <users: users object (1)>, <users: users object (3)>]>
+>>> users.objects.all().order_by("-first_name").values()
+<QuerySet [{'id': 4, 'first_name': 'Scott', 'last_name': 'Chong', 'email_address': 's@c.com', 'age': 34, 'created_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>)}, {'id': 1, 'first_name': 'Henry', 'last_name': 
+'Le', 'email_address': 'h@l.com', 'age': 21, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Derek', 'last_name': 'Pancakes', 'email_address': 'd@h.com', 'age': 25, 'created_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 40, 12, 817586, tzinfo=<UTC>)}]>        
+>>> exit()
+(env) PS C:\Users\henry\OneDrive\Documents\Coding Practice\Python\django\django_intro\User(shell)\User_shell> python .\manage.py shell
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 22:45:29) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from users_app.models import *
+>>> users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Henry', 'last_name': 'Le', 'email_address': 'h@l.com', 'age': 21, 'created_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 28, 6, 305719, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Derek', 'last_name': 'Pancakes', 'email_address': 'd@h.com', 'age': 25, 'created_at': datetime.datetime(2020, 3, 9, 20, 29, 2, 139392, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 40, 12, 817586, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Scott', 'last_name': 'Chong', 'email_address': 's@c.com', 'age': 34, 'created_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 9, 20, 34, 45, 471241, tzinfo=<UTC>)}]>        
+>>> users.objects.all()         
+<QuerySet [<users: 
+first_name: Henry
+last_name: Le
+email_address: h@l.com
+age: 21>, <users:
+first_name: Derek
+last_name: Pancakes
+email_address: d@h.com
+age: 25>, <users:
+first_name: Scott
+last_name: Chong
+email_address: s@c.com
+age: 34>]>
+>>>

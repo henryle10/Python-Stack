@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>edit message</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-danger">
+            {%if messages%}
+            <ul>
+                {%for message in messages%}
+                <li class="{{ message }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <h1>Edit message:</h1>
+        <div class="form-group">
+            <form action="/update_post/{{msg.id}}" method="POST">
+                {% csrf_token %}
+                <label for="">New Message:
+                    <textarea class="form-control" name="messagez" cols="150" rows="8"></textarea>
+                </label>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

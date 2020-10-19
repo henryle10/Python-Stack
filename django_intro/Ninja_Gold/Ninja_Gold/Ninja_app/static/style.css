@@ -1,0 +1,17 @@
+.gold_countz {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.squares {
+    display: inline-block;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+#activitiez {
+    border: 1px solid black;
+    height: 200px;
+    width: 500px;
+}

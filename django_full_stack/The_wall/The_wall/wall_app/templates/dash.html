@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="cont_background" class="container">
+        <div class="text-danger">
+            {%if messages%}
+            <ul class="list-unstyled d-inline-block">
+                {%for message in messages%}
+                <li class="text-left">
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <h1>CodingDojo Wall</h1>
+            <div>
+                <ul class="navbar-nav mr-auto">
+                    <li>
+                        <h3 class="navbar-brand">Welcome {{user.first_name}}</h3>
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="form-group">
+            <form action="/create_msg" method="POST">
+                {%csrf_token %}
+                <label for="">Post a message
+                    <textarea class="form-control" name="message" cols="150" rows="8"></textarea>
+                </label><br>
+                <button class="btn btn-primary">Post a message</button>
+            </form>
+        </div>
+
+        <!-- Messages and comments -->
+
+        {% for msg in all_messages %}
+        <div>
+            <p> <span style="font-weight: bolder;">Posted by: </span>{{msg.user.first_name}} - {{msg.created_at}}</p>
+            <p>{{msg.message}}</p>
+            {% if msg.user.id == request.session.user_id %}
+            <a href="/delete_post/{{msg.id}}">delete</a>
+            <a href="/update_page/{{msg.id}}">edit</a>
+            {% endif %}
+            <p>Total Likes: {{msg.total_likes}}</p>
+            <a href="/liking_msg/{{msg.id}}">Like</a>
+            <p style="font-style: italic; font-weight: bold;">Comment section:</p>
+        </div>
+
+
+        {% for com in all_comm %}
+        <div>
+            {%if com.message.id == msg.id%}
+            <p>{{com.user.first_name}} - {{com.created_at}} commented:</p>
+            <p>{{com.comment}}</p>
+            {% if com.user.id == request.session.user_id %}
+            <a href="/delete_com/{{com.id}}">delete comment</a>
+            {%endif%}
+            {%endif%}
+        </div>
+        {% endfor %}
+
+        <!-- Creating a comment post -->
+
+        <div class="form-group">
+            <form action="/create_comments" method="POST">
+                {%csrf_token %}
+                <label for="">Post a comment:
+                    <input type="hidden" name="mssg_id" value="{{msg.id}}">
+                    <textarea class="form-control" name="comments" cols="150" rows="2"></textarea>
+                </label><br>
+                <button class="btn btn-success">Post a comment</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+>>> Book.objects.create(title="C Sharp", desc="a programming language")
+>>> Book.objects.create(title="Java", desc="2 programming language")
+>>> Book.objects.create(title="Python", desc="cool programming language")
+>>> Book.objects.create(title="PHP", desc="meh programming language")
+>>> Book.objects.create(title="Ruby", desc="sapphire programming language")
+
+>>> author.objects.create(first_name="Jane", last_name="Austen"
+>>> author.objects.create(first_name="Emily", last_name="Dickinson"
+>>> author.objects.create(first_name="Fyodor", last_name="Dostoevksy"
+>>> author.objects.create(first_name="William", last_name="Shakespeare"
+>>> author.objects.create(first_name="Lau", last_name="Tzu"
+
+>>> book2 = Book.objects.get(id=2)
+>>> book2.title = "C#"
+>>> book2.save()
+
+>>> author4 = author.objects.get(id=4)
+>>> author4.first_name = "Bill"
+>>> author4.save()
+
+>>> book2 = Book.objects.get(id=2)
+>>> book3 = Book.objects.get(id=3)  
+>>> author1 = author.objects.get(id=1)
+>>> author1.books.add(book2)
+>>> author1.books.add(book3)
+
+>>> book4 = Book.objects.get(id=4)  
+>>> author2 = author.objects.get(id=2) 
+>>> author2.books.add(book2)
+>>> author2.books.add(book3)
+>>> author2.books.add(book4)
+
+>>> book5 = Book.objects.get(id=5)  
+>>> author3 = author.objects.get(id=3) 
+>>> author3.books.add(book2)
+>>> author3.books.add(book3)book
+>>> author3.books.add(book4)
+>>> author3.books.add(book5)
+
+>>> book6 = Book.objects.get(id=6)
+>>> author4 = author.objects.get(id=4) 
+>>> author4.books.add(book2)
+>>> author4.books.add(book3)
+>>> author4.books.add(book4)
+>>> author4.books.add(book5)
+>>> author4.books.add(book6)
+
+>>> book4.publishers.all()
+
+>>> book4.publishers.remove(author2) 
+>>> book4.publishers.all()   
+<QuerySet [<author: Fyodor Dostoevksy books_app.Book.None>, <author: Bill books_app.Book.None>]>
+
+>>> author5 = author.objects.get(id=5)
+>>> author5.books.add(book4)
+
+>>> author3.books.all()
+
+>>> book6.publishers.all()
+
+
+

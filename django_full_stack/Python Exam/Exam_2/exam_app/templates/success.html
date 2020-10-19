@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1>Hello {{user.first_name}}!</h1>
+        <ul class="nav navbar-nav ml-auto">
+            <li>
+                <div class="shadow">
+                    <a class="btn btn-danger" style="padding-right: 10px;" href="/logout">logout</a>
+                </div>
+            </li>
+            <li>
+                <div class="shadow">
+                    <a class="btn btn-info" href="/view_stats">View stats</a>
+                </div>
+            </li>
+            <li>
+                <div class="shadow">
+                    <a class="btn btn-success" href="/wish_page">Make a wish!</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h5>Your wish list:</h5>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Date added</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for wishes in not_granted%}
+                {% if wishes.wished_by.id == request.session.user_id%}
+                <tr>
+                    <th class="d-block">{{wishes.item}}</th>
+                    <th>{{wishes.created_at}}</th>
+                    <th>
+                        <a href="/remove/{{wishes.id}}">Remove</a>
+                        <a href="/wishes/{{wishes.id}}/edit">Edit</a>
+                        <a href="/grant_wish/{{wishes.id}}">Granted!</a>
+                    </th>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <h5>Granted wishes:</h5>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Wisher</th>
+                    <th scope="col">Date added</th>
+                    <th scope="col">Date Granted</th>
+                    <th scope="col">Likes</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            {% for wishes in granted_wishes %}
+            <tbody>
+                <tr>
+                    <th>{{wishes.item}}</th>
+                    <th>{{wishes.wished_by.first_name}}</th>
+                    <th>{{wishes.created_at}}</th>
+                    <th>{{wishes.updated_at}}</th>
+                    <th>{{wishes.like.count}}</th>
+                    {% if wishes.wished_by.id != request.session.user_id %}
+                    <th>
+                        <a href="/likes/{{wishes.id}}">like</a>
+                    </th>
+                    {% endif %}
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+
+</html>

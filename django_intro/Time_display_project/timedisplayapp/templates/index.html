@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Henry's website</title>
+</head>
+
+<body>
+    <h1>WASSSUPPP {{fn}}</h1>
+    display info
+    <p>My age is {{age}}</p>
+    <ul>
+        {% for hobbie in hobbies%}
+        <li>{{hobbie}}</li>
+        {%endfor%}
+    </ul>
+    <div>
+        <h3>The current time and date:</h3>
+    </div>
+    <div>
+        <h1>{{time}}</h1>
+    </div>
+    <form action="/some_route" method="post">
+        {% csrf_token %}
+        <p>Field One: <input name="one" type="text"></p>
+        <p>Field Two: <input name="one" type="text"></p>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

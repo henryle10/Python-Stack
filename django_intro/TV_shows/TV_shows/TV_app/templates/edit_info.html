@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="text-danger">
+        {%if messages%}
+        <ul>
+            {%for message in messages%}
+            <li class="{{ message }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <h1>Edit Show {{show_id.id}}</h1>
+    <form action="/update_info/{{show_id.id}}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="">Title
+                <input class="form-control" type="text" name="title">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="">Network
+                <input class="form-control" type="text" name="network">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="">Release Date
+                <input class="form-control" type="date" name="release_date">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="">Description
+                <textarea class="form-control" name="desc" id="" cols="30" rows="10"></textarea>
+            </label>
+        </div>
+        <br>
+        <button class="btn btn-outline-success btn-sm">Update</button>
+    </form>
+    <a href="/shows">Go Back</a>
+</body>
+
+</html>
